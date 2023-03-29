@@ -6,7 +6,6 @@ import os
 
 def profile_collector(username):
     """
-
     :param
     username: str
         user's username
@@ -17,10 +16,9 @@ def profile_collector(username):
     # Set the API endpoint URL
     url = "https://api.github.com/users/{username}"
     # Replace {username} with the GitHub username of the user you want to fetch
-    # username = "jansel"
     # Set the headers with your authentication token
     headers = {
-        "Authorization": "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"
+        "Authorization": "Your github authorization code"
     }
 
     # Make the API request
@@ -35,7 +33,7 @@ def profile_collector(username):
     if response.status_code == 200:
         # Print the user's profile information
         res = response.json()
-        print(res)
+        # print(res)
     else:
         # Print the error message
         # print("Error fetching user profile information:", response.text)
@@ -45,7 +43,7 @@ def profile_collector(username):
     response = requests.get(res['followers_url'])
     followers_num = len(response.json())
     data_dict['followers_num'] = followers_num
-    print('follower num: ', followers_num)
+    # print('follower num: ', followers_num)
 
     # 'repos_url'
     response = requests.get(res['repos_url'])
