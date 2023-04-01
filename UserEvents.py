@@ -46,7 +46,7 @@ def event_logger(username):
                 elif event['type'] == 'PullRequestEvent':
                     payload['action'] = data['action']
                     payload['number'] = data['number']
-                    payload['pull_request'] = data['action']
+                    payload['pull_request'] = data['pull_request']
                 
                 data_dict['payload'] = payload
 
