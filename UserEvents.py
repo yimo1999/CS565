@@ -52,7 +52,7 @@ def event_logger(username):
 
                 all_events.append(data_dict)
         # print(all_events)
-        print(j.dumps(all_events, indent=2))
+        # print(j.dumps(all_events, indent=2))
     else:
         # Print the error message
         # print("Error fetching user profile information:", response.text)
