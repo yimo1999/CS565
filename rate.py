@@ -7,6 +7,7 @@ username = input("Enter a GitHub username: ")
 repos_url = f"https://api.github.com/users/{username}/repos"
 stars_url = f"https://api.github.com/users/{username}/starred"
 contributions_url = f"https://api.github.com/users/{username}/events"
+followers_url = f"https://api.github.com/users/{username}/followers"
 
 # Retrieve information about the user's repositories
 repos_response = requests.get(repos_url)
@@ -32,8 +33,23 @@ for event in contributions:
     if event["type"] == "PushEvent":
         contribution_score += len(event["payload"]["commits"]) * 2
 
+# Retrieve information about the user's followers
+followers_response = requests.get(followers_url)
+followers = followers_response.json()
+
+# Calculate the user's follower score
+follower_score = len(followers)
+
+# Retrieve information about the user's forks
+fork_score = 0
+for repo in repos:
+    forks_url = f"https://api.github.com/repos/{username}/{repo['name']}/forks"
+    forks_response = requests.get(forks_url)
+    forks = forks_response.json()
+    fork_score += len(forks) * 2
+
 # Calculate the user's overall score
-score = repo_score + star_score + contribution_score
+score = repo_score + star_score + contribution_score + follower_score + fork_score
 
 # Print out the user's score
 print(f"{username}'s score: {score}")
