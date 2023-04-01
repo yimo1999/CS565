@@ -2,7 +2,6 @@ from UserProfile import profile_collector
 from UserEvents import *
 
 if __name__ == '__main__':
-    profile_collector('shhr3y')
     profile_collector('mrshenli')
     profile_collector('shaoyf42')
     profile_collector('ykddd')
