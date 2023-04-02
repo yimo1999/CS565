@@ -4,9 +4,9 @@ import csv
 import os
 
 
-def repo_info_scrapper():
+def repo_info_scrapper(directory):
     # Set the API endpoint URL
-    url = "https://api.github.com/repos/pytorch/pytorch"
+    url = "https://api.github.com/repos/{name}"
     # Replace {username} with the GitHub username of the user you want to fetch
     # Set the headers with your authentication token
     headers = {
@@ -15,7 +15,7 @@ def repo_info_scrapper():
 
     # Make the API request
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url.format(name=directory), headers=headers)
     res = ''
     data_dict = collections.defaultdict()
 
@@ -37,7 +37,7 @@ def repo_info_scrapper():
     data_dict['contributors_url'] = len(requests.get(res['contributors_url']).json()) 
     data_dict['pulls_url'] = len(requests.get('https://api.github.com/repos/pytorch/pytorch/pulls').json()) 
     data_dict['created_at'] = res['created_at']
-    data_dict['contributors'] = requests.get(res['contributors_url']).json()
+    data_dict['contributors'] = [x['login'] for x in requests.get(res['contributors_url']).json()]
 
     # print(data_dict)
     dict_to_csv(data_dict)
