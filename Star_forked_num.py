@@ -77,7 +77,7 @@ def dict_to_csv(data_dict):
     """
     field_names = ['username', 'id', 'stargazers_sum', 'forks_sum']
 
-    if not os.path.exists('user_profile.csv'):
+    if not os.path.exists('stars_forked_num.csv'):
         with open('stars_forked_num.csv', 'w') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=field_names)
             writer.writeheader()
