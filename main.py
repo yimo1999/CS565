@@ -1,5 +1,4 @@
-from UserProfile import profile_collector
-from UserEvents import *
+from CS565.Star_forked_num import profile_collector
 
 if __name__ == '__main__':
     profile_collector('mrshenli')
@@ -12,3 +11,4 @@ if __name__ == '__main__':
     profile_collector('huydhn')
     profile_collector('H-Huang')
     profile_collector('jerryzh168')
+    profile_collector('yimo1999')
