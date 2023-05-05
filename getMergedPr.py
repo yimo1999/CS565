@@ -4,7 +4,7 @@ import csv
 import random
 import time
 
-token = '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'
+token = ''
 headers = {
     'Authorization': 'token ' + token,
     'Accept': 'application/vnd.github+json'
