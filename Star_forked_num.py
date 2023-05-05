@@ -81,11 +81,13 @@ def dict_to_csv(data_dict):
         with open('stars_forked_num.csv', 'w') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=field_names)
             writer.writeheader()
+            print(type(data_dict))
             writer.writerow(data_dict)
     else:
         with open('stars_forked_num.csv', 'a+') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=field_names)
             # writer.writeheader()
+            print(type(data_dict))
             writer.writerow(data_dict)
 
     # print(data_dict)

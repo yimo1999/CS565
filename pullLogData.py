@@ -12,4 +12,5 @@ with open('pull_requests.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['Title', 'Created At', 'URL', 'Username'])
     for pr in pull_requests:
+        # print(type(pr['title']))
         writer.writerow([pr['title'], pr['created_at'], pr['html_url'], pr['user']['login']])
