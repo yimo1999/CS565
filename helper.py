@@ -2,8 +2,9 @@ import requests
 import collections
 import csv
 import os
+from datetime import datetime, timedelta
 
-token = ''
+token = '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'
 headers = {"Authorization": "token " + token}
 
 def get_forked_and_stargazed(username):
@@ -99,6 +100,38 @@ def get_accepted_and_total_pull_requests(username):
         # print("Error fetching user profile information:", response.text)
         return "Error fetching user profile information:", response.text
     
+def contributions_past_year(username):
+    today = datetime.now()
+    one_year_ago = today - timedelta(days=365)
+
+    url = f'https://api.github.com/graphql'
+    query = f'''
+    query {{
+      user(login: "{username}") {{
+        contributionsCollection(from: "{one_year_ago.isoformat()}Z", to: "{today.isoformat()}Z") {{
+          contributionCalendar {{
+            totalContributions
+            weeks {{
+              contributionDays {{
+                contributionCount
+                weekday
+              }}
+            }}
+          }}
+        }}
+      }}
+    }}
+    '''
+    response = requests.post(url, headers=headers, json={'query': query})
+    data = response.json()
+    weeks = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
+    
+    # total_contributions = sum([day["contributionCount"] for week in weeks for day in week["contributionDays"]])
+    active_days = len([day for week in weeks for day in week["contributionDays"] if day["contributionCount"] > 0])
+    percentage_active_days = active_days / (len(weeks) * 7) * 100
+    
+    return int(percentage_active_days)
+
 def data_sum(content):
     """
     This function is used to return the sum of stars number,
