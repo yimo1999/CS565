@@ -3,7 +3,8 @@ import collections
 import csv
 import os
 
-headers = {"Authorization": "token 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"}
+token = ''
+headers = {"Authorization": "token " + token}
 
 def get_forked_and_stargazed(username):
     """
@@ -13,8 +14,8 @@ def get_forked_and_stargazed(username):
     :return:
         None
     """
-
     global headers
+
     # Set the API endpoint URL
     url = "https://api.github.com/users/{username}"
     # Replace {username} with the GitHub username of the user you want to fetch
@@ -24,9 +25,6 @@ def get_forked_and_stargazed(username):
     response = requests.get(url.format(username=username), headers=headers)
 
     res = ''
-    data_dict = collections.defaultdict()
-    data_dict['username'] = username
-    data_dict['id'] = response.json()['id']
 
     # Check if the request was successful
     if response.status_code == 200:
@@ -36,9 +34,13 @@ def get_forked_and_stargazed(username):
         # Print the error message
         return "Error fetching user profile information:", response.text
 
+    data_dict = collections.defaultdict()
+    data_dict['username'] = username
+    data_dict['id'] = res['id']
 
     # 'repos_url'
-    response = requests.get(res['repos_url']+'?per_page=100')
+    response = requests.get(res['repos_url']+'?per_page=100', headers=headers)
+    # print(response.status_code)
 
     # data about star num, watcher num, fork num
     data = data_sum(response.json())
@@ -54,9 +56,7 @@ def get_accepted_and_total_pull_requests(username):
     events_url = 'https://api.github.com/users/{username}/events?per_page=100'
     # Replace {username} with the GitHub username of the user you want to fetch
     # Set the headers with your authentication token
-    headers = {
-        "Authorization": "Your github authorization code"
-    }
+    global headers
 
     # loggged_events = ['WatchEvent', 'PushEvent', 'PullRequestEvent']
     loggged_events = ['PullRequestEvent']
@@ -99,37 +99,6 @@ def get_accepted_and_total_pull_requests(username):
         # print("Error fetching user profile information:", response.text)
         return "Error fetching user profile information:", response.text
     
-# def get_accepted_and_total_pull_requests(user):
-#     global headers
-#     url = f"https://api.github.com/users/{user}/repos?per_page=100"
-
-#     response = requests.get(url, headers=headers)
-
-#     if response.status_code != 200:
-#         raise Exception(f'Status Code: {response.status_code} | {response.json()}')
-    
-#     repos = response.json()
-
-#     total_pull_requests = 0
-#     accepted_pull_requests = 0
-#     for repo in repos:
-#         repo_name = repo["name"]
-#         url = f"https://api.github.com/repos/{user}/{repo_name}/pulls?per_page=100&state=all"
-#         response = requests.get(url, headers=headers)
-
-#         if response.status_code != 200:
-#             raise Exception(f'Status Code: {response.status_code} | {response.json()}')
-        
-#         pulls = response.json()
-#         total_pull_requests += len(pulls)
-
-#         for pull in pulls:
-#             if pull["state"] == 'closed' and pull["merged_at"] is not None:
-#                 accepted_pull_requests += 1
-        
-#     return (accepted_pull_requests, total_pull_requests)
-
-
 def data_sum(content):
     """
     This function is used to return the sum of stars number,
