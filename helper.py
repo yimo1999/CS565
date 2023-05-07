@@ -4,8 +4,15 @@ import csv
 import os
 from datetime import datetime, timedelta
 
-token = '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'
-headers = {"Authorization": "token " + token}
+# token = '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'
+# headers = {"Authorization": "token " + token}
+
+token = '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'
+headers = {
+    'Authorization': 'Bearer ' + token,
+    'Accept': 'application/vnd.github+json'
+}
+
 
 def get_forked_and_stargazed(username):
     """
@@ -126,11 +133,11 @@ def contributions_past_year(username):
     data = response.json()
     weeks = data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
     
-    # total_contributions = sum([day["contributionCount"] for week in weeks for day in week["contributionDays"]])
+    total_contributions = sum([day["contributionCount"] for week in weeks for day in week["contributionDays"]])
     active_days = len([day for week in weeks for day in week["contributionDays"] if day["contributionCount"] > 0])
     percentage_active_days = active_days / (len(weeks) * 7) * 100
     
-    return int(percentage_active_days)
+    return int(percentage_active_days), int(total_contributions)
 
 def data_sum(content):
     """
