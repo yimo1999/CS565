@@ -24,6 +24,7 @@ class MLModel(enum.Enum):
 
 
 def get_model(type):
+    print('MODEL:', type.name)
     if type == MLModel.NaiveBayes:
         model = GaussianNB(var_smoothing=0.2)
         return model
@@ -69,7 +70,7 @@ def main():
 
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.20, random_state=0, shuffle=True)
 
-    model = get_model(MLModel.NaiveBayes)
+    model = get_model(MLModel.SVM)
     
     model.fit(X_train, y_train)
 
