@@ -1,0 +1,31 @@
+Title,Created At,URL,Username
+make torch/csrc/distributed/c10d/ProcessGroupGloo.cpp data_ptr-correct,2023-05-05T04:38:14Z,https://github.com/pytorch/pytorch/pull/100689,dagitses
+make torch/csrc/distributed/c10d/quantization/quantization.cpp data_ptr-correct,2023-05-05T04:19:41Z,https://github.com/pytorch/pytorch/pull/100688,dagitses
+make torch/csrc/distributed/c10d/quantization/quantization_gpu.cu data_ptr-correct,2023-05-05T03:22:48Z,https://github.com/pytorch/pytorch/pull/100685,dagitses
+Add error check for dtype match in `THPVariable_set_grad`,2023-05-05T03:11:11Z,https://github.com/pytorch/pytorch/pull/100683,kiersten-stokes
+make torch/csrc/jit/python/pybind_utils.cpp data_ptr-correct,2023-05-05T03:08:52Z,https://github.com/pytorch/pytorch/pull/100682,dagitses
+make torch/csrc/jit/passes/onnx/unpack_quantized_weights.cpp data_ptr-correct,2023-05-05T03:00:43Z,https://github.com/pytorch/pytorch/pull/100681,dagitses
+inductor: fix mm_plus_mm fusion pattern issue when has broadcast add,2023-05-05T02:11:54Z,https://github.com/pytorch/pytorch/pull/100679,XiaobingSuper
+use const_ and mutable_ data_ptr for much of torch/csrc/jit/runtime/static/ops.cpp,2023-05-05T02:10:15Z,https://github.com/pytorch/pytorch/pull/100678,dagitses
+Adding decorator tests,2023-05-05T01:59:01Z,https://github.com/pytorch/pytorch/pull/100677,ulasonat
+"Revert ""Mark Windows CPU jobs as unstable (#100581)""",2023-05-05T01:37:26Z,https://github.com/pytorch/pytorch/pull/100676,huydhn
+[inductor] Pattern to replace cumsum with arange,2023-05-05T00:24:48Z,https://github.com/pytorch/pytorch/pull/100673,jansel
+[inductor] Run dead_node_elimination to a fixed point,2023-05-05T00:23:56Z,https://github.com/pytorch/pytorch/pull/100672,jansel
+Add support for list copy in dynamo export,2023-05-05T00:12:36Z,https://github.com/pytorch/pytorch/pull/100669,guangy10
+Symintify TensorFactories.empty_like,2023-05-05T00:10:06Z,https://github.com/pytorch/pytorch/pull/100668,vanbasten23
+[CI] update hf version for ci,2023-05-04T23:44:05Z,https://github.com/pytorch/pytorch/pull/100666,ngimel
+[ET selective build] add kernel metadata section to selective_build.yaml,2023-05-04T23:35:52Z,https://github.com/pytorch/pytorch/pull/100665,kirklandsign
+"Add ""all"" option to logging",2023-05-04T23:16:42Z,https://github.com/pytorch/pytorch/pull/100664,mlazos
+[opinfo prims] equal,2023-05-04T21:57:04Z,https://github.com/pytorch/pytorch/pull/100663,khushi-411
+[profiler] rename inputs -> input_shapes,2023-05-04T21:54:32Z,https://github.com/pytorch/pytorch/pull/100662,davidberard98
+[MPS] Add support for Custom Kernels,2023-05-04T21:32:46Z,https://github.com/pytorch/pytorch/pull/100661,razarmehr
+[ONNX] Introduce FX-ONNX dispatcher,2023-05-04T21:27:00Z,https://github.com/pytorch/pytorch/pull/100660,titaiwangms
+[NOT_FOR_LAND][indcutor] temporary change to enable coordinate descent tuning,2023-05-04T21:20:26Z,https://github.com/pytorch/pytorch/pull/100659,shunting314
+build unification v3 prototype,2023-05-04T21:19:56Z,https://github.com/pytorch/pytorch/pull/100658,dagitses
+Type torch._inductor.codegen.wrapper,2023-05-04T21:18:07Z,https://github.com/pytorch/pytorch/pull/100657,ezyang
+Fix type annotation of `torch.split`,2023-05-04T20:36:36Z,https://github.com/pytorch/pytorch/pull/100655,durandtibo
+Fold Conv-Bn,2023-05-04T20:04:33Z,https://github.com/pytorch/pytorch/pull/100653,eellison
+Inductor Optimize For Inference/Freezing,2023-05-04T20:04:29Z,https://github.com/pytorch/pytorch/pull/100652,eellison
+[TMP] stand in for 100457,2023-05-04T20:04:25Z,https://github.com/pytorch/pytorch/pull/100651,eellison
+Add unit test for nested_tensor input to nn.TransformerEncoder,2023-05-04T19:54:55Z,https://github.com/pytorch/pytorch/pull/100650,mikekgfb
+remove unused extract_arg_by_filtered_index utility,2023-05-04T19:50:53Z,https://github.com/pytorch/pytorch/pull/100649,dagitses
